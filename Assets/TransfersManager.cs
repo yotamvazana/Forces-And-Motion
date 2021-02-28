@@ -22,7 +22,7 @@ public class TransfersManager : MonoBehaviour
             rope.RemoveBodyFromRope(body);
              body.onRope = false;
         }
-        Debug.Log("yo");
+
     }
 
 

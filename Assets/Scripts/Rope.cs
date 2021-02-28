@@ -11,7 +11,7 @@ public class Rope : MonoBehaviour
 
     [SerializeField ]int nutonRatio=100;
     [SerializeField] List<BodySpot> redTeamSpotList = new List<BodySpot>(4);
-    [SerializeField] List<BodySpot> blueTeamSideList = new List<BodySpot>(4);
+    [SerializeField] List<BodySpot> blueTeamSpotList = new List<BodySpot>(4);
      List<Body> bodysConnected = new List<Body>();
 
     internal float blueForce;
@@ -65,7 +65,7 @@ public class Rope : MonoBehaviour
         }
         else if(playerGroup == BodyGroup.blue)
         {
-            foreach (BodySpot found in blueTeamSideList)
+            foreach (BodySpot found in blueTeamSpotList)
             {
                 if (!found.isTaken)
                 {
@@ -102,13 +102,32 @@ public class Rope : MonoBehaviour
 
             redForce -= body.scaleMass * nutonRatio;
             ApplyForceToRope(false, true, body.scaleMass);
+            foreach(BodySpot found in redTeamSpotList)
+            {
+                if (found.containedBody == body)
+                {
+                    found.containedBody = null; 
+                    found.isTaken = false;
+                    break;
+                }
+            }        
         }
         else
         {
             blueForce -= body.scaleMass * nutonRatio;
             ApplyForceToRope(false, false, body.scaleMass);
+            foreach (BodySpot found in blueTeamSpotList)
+            {
+                if (found.containedBody == body)
+                {
+                    found.containedBody = null;
+                    found.isTaken = false;
+                    break;
+                }
+            }
         }
         body.transform.parent = null;
+        
         
         
     }

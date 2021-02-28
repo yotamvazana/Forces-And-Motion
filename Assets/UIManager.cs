@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI blueForceText;
     [SerializeField] TextMeshProUGUI redForceText;
     [SerializeField] TextMeshProUGUI TotalForceText;
+    [SerializeField] TextMeshProUGUI SpeedText;
 
 
     private void Start()
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
         blueForceText.text = ToNutonString(0);
         redForceText.text = ToNutonString(0);
         TotalForceText.text = ToNutonString(0);
+        SpeedText.text = ToSpeedString(0);
         
     }
 
@@ -25,10 +27,19 @@ public class UIManager : MonoBehaviour
         blueForceText.text = ToNutonString(blueForce); 
         redForceText.text = ToNutonString(redForce);
         TotalForceText.text = ToNutonString(totalForce);
+        SpeedText.text = ToSpeedString(totalForce/100);
 
     }
     string ToNutonString(int Force)
     {
         return Force.ToString() + "N";
+    }
+    string ToSpeedString(int Force)
+    {
+        if (Force > 0)
+        {
+            Force *= -1;
+        }
+        return Force.ToString() + "mph";
     }
 }

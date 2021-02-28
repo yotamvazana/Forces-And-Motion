@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
 
         currentLookingPos += smoothedVelocity;
 
-        transform.rotation = Quaternion.Euler(Mathf.Clamp(-currentLookingPos.y, 0, 35), Mathf.Clamp(currentLookingPos.x,-50, 50), transform.rotation.z);
+        transform.rotation = Quaternion.Euler(Mathf.Clamp(-currentLookingPos.y, -10, 45), Mathf.Clamp(currentLookingPos.x,-50, 50), transform.rotation.z);
 
         
     }
@@ -56,7 +56,14 @@ public class CameraController : MonoBehaviour
     {
         if (Physics.Raycast(viewCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)), out RaycastHit hit, interractRange, targetLayer))
         {
+            if (hit.collider.GetComponent<SceneReset>() != null)
+            {
+                hit.collider.GetComponent<SceneReset>().ResetScene();
+            }
+            else
+            {
             transfersManager.BodyClicked(hit.collider.GetComponent<Body>());
+            }
         }
 
     }
