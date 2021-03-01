@@ -56,9 +56,9 @@ public class CameraController : MonoBehaviour
     {
         if (Physics.Raycast(viewCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)), out RaycastHit hit, interractRange, targetLayer))
         {
-            if (hit.collider.GetComponent<SceneReset>() != null)
+            if (hit.collider.GetComponent<DimenstionUI>() != null)
             {
-                hit.collider.GetComponent<SceneReset>().ResetScene();
+                hit.collider.GetComponent<DimenstionUI>().UiPressed();
             }
             else
             {
