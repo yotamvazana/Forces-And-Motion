@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     }
     string ToSpeedString(int Force)
     {
-        if (Force > 0)
+        if (Force < 0)
         {
             Force *= -1;
         }
