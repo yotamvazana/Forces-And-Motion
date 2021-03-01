@@ -29,11 +29,15 @@ public class Scateboard : MonoBehaviour
     }
     public void Update()
     {
-        CalculateForces();
+        CalculateMass();
     }
-    public void CalculateForces()
+    public void CalculateMass()
     {
-        rb.velocity = forceActivated;
+        rb.AddForce(forceActivated);
+        if (forceActivated.x > 0.1)
+        {
+            rb.mass = forceActivated.x;
+        }
     }
     public void AddBodyToRope(BodyGroup playerGroup,Body body)
     {
