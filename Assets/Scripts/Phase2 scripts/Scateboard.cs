@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class Rope : MonoBehaviour
+public class Scateboard : MonoBehaviour
 {
     Rigidbody rb;
 
@@ -16,7 +16,7 @@ public class Rope : MonoBehaviour
 
     internal float blueForce;
     internal float redForce;
-    internal UIManager uIManager;
+    internal UIManagerPhase2 uIManagerPhase2;
     Vector3 forceActivated;
    
 
@@ -131,17 +131,17 @@ public class Rope : MonoBehaviour
         
         
     }
-    public void ApplyForceToRope(bool Add,bool isRed,float mass)
+    public void ApplyForceToRope(bool Add,bool isRed,float force)
     {
         if (Add)
         {
             if (isRed)
             {
-                forceActivated.x += mass;
+                forceActivated.x += force;
             }
             else
             {
-                forceActivated.x -= mass;
+                forceActivated.x -= force;
 
             }
         }
@@ -149,15 +149,15 @@ public class Rope : MonoBehaviour
         {
             if (isRed)
             {
-                forceActivated.x -= mass;
+                forceActivated.x -= force;
             }
             else
             {
-                forceActivated.x += mass;
+                forceActivated.x += force;
 
             }
         }
-        uIManager.ForceUpdate(Mathf.RoundToInt(blueForce), Mathf.RoundToInt(redForce), Mathf.RoundToInt(forceActivated.x*nutonRatio));
+        uIManagerPhase2.ForceUpdate(Mathf.RoundToInt(blueForce), Mathf.RoundToInt(redForce), Mathf.RoundToInt(forceActivated.x*nutonRatio));
     }
 
 
