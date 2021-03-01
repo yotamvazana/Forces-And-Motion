@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class DimenstionUIPhase2 : MonoBehaviour
 {
     [SerializeField] private Scateboard scateboard;
-   public enum ButtonType {MoreForce,LessForce}
+   public enum ButtonType {MoreForce,LessForce,resetScene,stop}
     public ButtonType buttonType;
     bool isStopped;
     public void UiPressed()
@@ -17,6 +17,22 @@ public class DimenstionUIPhase2 : MonoBehaviour
                 break;
             case ButtonType.LessForce:
                 scateboard.force -= 0.5f;
+                break;
+            case ButtonType.resetScene:
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                break;
+            case ButtonType.stop:
+                if (isStopped)
+                {
+                Time.timeScale = 1;
+                    isStopped = false;
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    isStopped = true;
+                }
                 break;
 
         }

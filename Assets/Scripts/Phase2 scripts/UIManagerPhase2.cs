@@ -16,7 +16,7 @@ public class UIManagerPhase2 : MonoBehaviour
     {
         scateboard.uIManagerPhase2 = this;
         blueForceText.text = ToNutonString(0);
-        redForceText.text = ToNutonString(0);
+        
         TotalForceText.text = ToNutonString(0);
         SpeedText.text = ToSpeedString(0);
         
@@ -25,7 +25,7 @@ public class UIManagerPhase2 : MonoBehaviour
     public void ForceUpdate(int blueForce,int redForce, int totalForce)
     {
         blueForceText.text = ToKilogramsString(blueForce); 
-        redForceText.text = ToKilogramsString(redForce);
+
         TotalForceText.text = ToNutonString(totalForce);
         SpeedText.text = ToSpeedString(totalForce/100);
 
