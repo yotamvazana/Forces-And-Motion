@@ -60,6 +60,10 @@ public class CameraPhase2 : MonoBehaviour
             {
                 hit.collider.GetComponent<SceneReset>().ResetScene();
             }
+            else if (hit.collider.GetComponent<DimenstionUIPhase2>() != null)
+            {
+                hit.collider.GetComponent<DimenstionUIPhase2>().UiPressed();
+            }
             else
             {
                 transferPhase2.BodyClicked(hit.collider.GetComponent<Body>());

@@ -9,7 +9,7 @@ public enum BodyGroup { red, blue }
 
 public class Body : MonoBehaviour
 {
-    float scale_weight_Ratio=1;
+    [SerializeField]float scale_weight_Ratio=1;
     internal float scaleMass;
     public BodyGroup bodyGroup;
     internal bool onRope=false;

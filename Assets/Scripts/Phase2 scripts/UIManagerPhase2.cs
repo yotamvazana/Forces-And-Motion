@@ -24,8 +24,8 @@ public class UIManagerPhase2 : MonoBehaviour
 
     public void ForceUpdate(int blueForce,int redForce, int totalForce)
     {
-        blueForceText.text = ToNutonString(blueForce); 
-        redForceText.text = ToNutonString(redForce);
+        blueForceText.text = ToKilogramsString(blueForce); 
+        redForceText.text = ToKilogramsString(redForce);
         TotalForceText.text = ToNutonString(totalForce);
         SpeedText.text = ToSpeedString(totalForce/100);
 
@@ -34,9 +34,13 @@ public class UIManagerPhase2 : MonoBehaviour
     {
         return Force.ToString() + "N";
     }
+    string ToKilogramsString(int Force)
+    {
+        return Force.ToString() + "Kg";
+    }
     string ToSpeedString(int Force)
     {
-        if (Force > 0)
+        if (Force < 0)
         {
             Force *= -1;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class DimenstionUI : MonoBehaviour
 {
-   public enum ButtonType {ResetScene,Pause}
+   public enum ButtonType {ResetScene,Pause,MoreForce,LessForce}
     public ButtonType buttonType;
     bool isStopped;
     public void UiPressed()

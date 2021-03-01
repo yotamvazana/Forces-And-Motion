@@ -14,11 +14,12 @@ public class Scateboard : MonoBehaviour
     [SerializeField] List<BodySpot> blueTeamSpotList = new List<BodySpot>(4);
      List<Body> bodysConnected = new List<Body>();
 
+     public float force;
     internal float blueForce;
     internal float redForce;
     internal UIManagerPhase2 uIManagerPhase2;
     Vector3 forceActivated;
-   
+    Vector3 playerAddedForce = new Vector3();
 
 
 
@@ -30,10 +31,12 @@ public class Scateboard : MonoBehaviour
     public void Update()
     {
         CalculateMass();
+        uIManagerPhase2.ForceUpdate(Mathf.RoundToInt(forceActivated.x), Mathf.RoundToInt(forceActivated.x), Mathf.RoundToInt(this.force*nutonRatio));
     }
     public void CalculateMass()
     {
-        rb.AddForce(forceActivated);
+        playerAddedForce.x = force;
+        rb.AddForce(playerAddedForce);
         if (forceActivated.x > 0.1)
         {
             rb.mass = forceActivated.x;
@@ -145,7 +148,7 @@ public class Scateboard : MonoBehaviour
             }
             else
             {
-                forceActivated.x -= force;
+                forceActivated.x += force;
 
             }
         }
@@ -157,11 +160,10 @@ public class Scateboard : MonoBehaviour
             }
             else
             {
-                forceActivated.x += force;
+                forceActivated.x -= force;
 
             }
         }
-        uIManagerPhase2.ForceUpdate(Mathf.RoundToInt(blueForce), Mathf.RoundToInt(redForce), Mathf.RoundToInt(forceActivated.x*nutonRatio));
     }
 
 
