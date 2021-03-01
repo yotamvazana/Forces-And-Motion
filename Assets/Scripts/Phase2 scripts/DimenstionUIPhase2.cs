@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class DimenstionUIPhase2 : MonoBehaviour
 {
     [SerializeField] private Scateboard scateboard;
-   public enum ButtonType {MoreForce,LessForce,resetScene,stop}
+   public enum ButtonType {MoreForce,LessForce,resetScene,stop,MoreFriction,LessFriction}
     public ButtonType buttonType;
     bool isStopped;
     public void UiPressed()
@@ -33,6 +33,12 @@ public class DimenstionUIPhase2 : MonoBehaviour
                     Time.timeScale = 0;
                     isStopped = true;
                 }
+                break;
+            case ButtonType.LessFriction:
+                scateboard.rb.drag-=1; 
+                break;
+            case ButtonType.MoreFriction:
+                scateboard.rb.drag+=1; 
                 break;
 
         }

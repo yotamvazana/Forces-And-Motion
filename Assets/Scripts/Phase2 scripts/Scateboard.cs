@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Scateboard : MonoBehaviour
 {
-    Rigidbody rb;
+    internal Rigidbody rb;
 
     [SerializeField ]int nutonRatio=100;
     [SerializeField] List<BodySpot> redTeamSpotList = new List<BodySpot>(4);
@@ -24,7 +24,7 @@ public class Scateboard : MonoBehaviour
 
 
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
